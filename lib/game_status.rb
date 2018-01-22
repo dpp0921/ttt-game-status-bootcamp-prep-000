@@ -25,7 +25,8 @@ def full?(board)
   board.all? {|token| token == "X" || token == "O"}
 end
 def draw?(board)
-  full?(board) && !won?(board)
+  if full?(board) && !won?(board)
+    return true
 end
 def over?(board)
   won?(board) || full?(board)
