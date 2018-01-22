@@ -15,7 +15,7 @@ WIN_COMBINATIONS = [
   [2, 4, 6]
 ]
 def won?(board)
-  WIN_COMBINATIONS.each do |combo|
+  WIN_COMBINATIONS.detect do |combo|
     board[combo[0]] == board[combo[1]] &&
     board[combo[1]] == board[combo[2]] &&
     position_taken?(board, combo[0])
@@ -25,9 +25,7 @@ def full?(board)
   board.all? {|token| token == "X" || token == "O"}
 end
 def draw?(board)
-  if full?(board) && !won?(board)
-    true
-  end
+  full?(board) && !won?(board)
 end
 def over?(board)
   won?(board) || full?(board)
